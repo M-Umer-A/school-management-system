@@ -1,6 +1,8 @@
 package com.school.gui;
 
 import com.school.model.User;
+import com.school.model.Student;
+import com.school.model.Teacher;
 import com.school.services.AuthService;
 import javafx.application.Application;
 import javafx.geometry.Insets;

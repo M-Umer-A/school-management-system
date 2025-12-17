@@ -1,3 +1,5 @@
+com\school\gui\SchoolManagementGUI.class
+com\school\gui\TeacherDashboard.class
 com\school\model\User.class
 com\school\model\Subject.class
 com\school\services\LectureNoteService.class
@@ -12,7 +14,9 @@ com\school\services\SubjectService.class
 com\school\services\TeacherService.class
 com\school\services\StudentService.class
 com\school\database\DBConnection.class
+com\school\gui\AdminDashboard.class
 com\school\services\AuthService.class
 com\school\model\Teacher.class
 com\school\services\GradeService.class
 com\school\exceptions\RecordNotFoundException.class
+com\school\gui\StudentDashboard.class
