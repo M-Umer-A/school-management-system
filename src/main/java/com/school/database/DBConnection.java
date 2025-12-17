@@ -14,7 +14,7 @@ public class DBConnection {
         if (datastore == null) {
             MongoClient client = MongoClients.create(
 
-                    "mongodb+srv://umerashrafuddin_db_user:<db_password>@smscluster.tnpbuvd.mongodb.net/"
+                    "mongodb+srv://umerashrafuddin_db_user:123@smscluster.tnpbuvd.mongodb.net/"
 
             );
 

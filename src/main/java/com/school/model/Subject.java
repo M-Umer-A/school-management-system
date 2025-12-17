@@ -19,6 +19,9 @@ public class Subject {
         this.code = code;
         this.name = name;
     }
+    public String getName(){
+        return name;
+    }
 
     @Override
     public String toString() {

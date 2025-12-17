@@ -13,14 +13,20 @@ public class Teacher {
     private String name;
     private String department;
     private String subject;
+    private String subjectCode;
+    private String email;
+    private String phone;
 
     public Teacher() {
     }
 
-    public Teacher(int teacherId, String name, String department) {
+    public Teacher(int teacherId, String name, String department, String subjectCode, String email, String phone) {
         this.teacherId = teacherId;
         this.name = name;
         this.department = department;
+        this.email = email;
+        this.phone = phone;
+        this.subjectCode = subjectCode;
     }
 
     public int getTeacherId() {

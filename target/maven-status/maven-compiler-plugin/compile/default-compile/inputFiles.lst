@@ -4,10 +4,16 @@ D:\OOP-PROJECT\school-management-system\src\main\java\com\school\exceptions\Dupl
 D:\OOP-PROJECT\school-management-system\src\main\java\com\school\exceptions\RecordNotFoundException.java
 D:\OOP-PROJECT\school-management-system\src\main\java\com\school\Main.java
 D:\OOP-PROJECT\school-management-system\src\main\java\com\school\model\Attendance.java
+D:\OOP-PROJECT\school-management-system\src\main\java\com\school\model\Grade.java
+D:\OOP-PROJECT\school-management-system\src\main\java\com\school\model\LectureNote.java
 D:\OOP-PROJECT\school-management-system\src\main\java\com\school\model\Student.java
 D:\OOP-PROJECT\school-management-system\src\main\java\com\school\model\Subject.java
 D:\OOP-PROJECT\school-management-system\src\main\java\com\school\model\Teacher.java
+D:\OOP-PROJECT\school-management-system\src\main\java\com\school\model\User.java
 D:\OOP-PROJECT\school-management-system\src\main\java\com\school\services\AttendanceService.java
+D:\OOP-PROJECT\school-management-system\src\main\java\com\school\services\AuthService.java
+D:\OOP-PROJECT\school-management-system\src\main\java\com\school\services\GradeService.java
+D:\OOP-PROJECT\school-management-system\src\main\java\com\school\services\LectureNoteService.java
 D:\OOP-PROJECT\school-management-system\src\main\java\com\school\services\StudentService.java
 D:\OOP-PROJECT\school-management-system\src\main\java\com\school\services\SubjectService.java
 D:\OOP-PROJECT\school-management-system\src\main\java\com\school\services\TeacherService.java
