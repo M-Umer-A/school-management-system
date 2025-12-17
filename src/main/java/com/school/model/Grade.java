@@ -1,19 +1,26 @@
 package com.school.model;
 
-import java.util.Date;
+import dev.morphia.annotations.Entity;
+import dev.morphia.annotations.Id;
+import org.bson.types.ObjectId;
 
+@Entity("grades")
 public class Grade {
+
+    @Id
+    private ObjectId id;
     private int studentId;
     private String subjectCode;
     private int teacherId;
-    private String grade;
-    private double marks;
-    private String term;
-    private Date date;
+    private String grade; // A+, A, B+, B, etc.
+    private int marks; // 0-100
+    private String term; // "Mid-Term", "Final", "Quiz-1", etc.
+    private String date;
 
-    
-    public Grade(int studentId, String subjectCode, int teacherId,
-            String grade, double marks, String term, String date2) {
+    public Grade() {
+    }
+
+    public Grade(int studentId, String subjectCode, int teacherId, String grade, int marks, String term, String date) {
         this.studentId = studentId;
         this.subjectCode = subjectCode;
         this.teacherId = teacherId;
@@ -23,7 +30,10 @@ public class Grade {
         this.date = date;
     }
 
-    
+    public ObjectId getId() {
+        return id;
+    }
+
     public int getStudentId() {
         return studentId;
     }
@@ -56,11 +66,11 @@ public class Grade {
         this.grade = grade;
     }
 
-    public double getMarks() {
+    public int getMarks() {
         return marks;
     }
 
-    public void setMarks(double marks) {
+    public void setMarks(int marks) {
         this.marks = marks;
     }
 
@@ -72,11 +82,17 @@ public class Grade {
         this.term = term;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Student ID: " + studentId + " | Subject: " + subjectCode +
+                " | " + term + " | Marks: " + marks + " | Grade: " + grade;
     }
 }
