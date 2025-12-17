@@ -1,0 +1,12 @@
+com\school\services\StudentService.class
+com\school\database\DBConnection.class
+com\school\model\Subject.class
+com\school\exceptions\DuplicateRecordException.class
+com\school\model\Student.class
+com\school\model\Teacher.class
+com\school\model\Attendance.class
+com\school\App.class
+com\school\exceptions\RecordNotFoundException.class
+com\school\services\AttendanceService.class
+com\school\services\SubjectService.class
+com\school\services\TeacherService.class
