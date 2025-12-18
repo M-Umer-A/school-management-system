@@ -164,7 +164,7 @@ public class App {
         sc.nextLine();
 
         switch (choice) {
-            case 1 -> teacherService.addTeacher(null);
+            case 1 -> teacherService.addTeacher();
             case 2 -> teacherService.viewAllTeachers();
             case 3 -> teacherService.viewTeacherById();
             case 4 -> teacherService.updateTeacher();

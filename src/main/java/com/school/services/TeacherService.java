@@ -15,12 +15,29 @@ public class TeacherService {
     private final Datastore ds = DBConnection.getDatastore();
     private final Scanner sc = new Scanner(System.in);
 
-    public void addTeacher(Teacher t) {
+    // ===== GUI METHODS =====
+    public void addTeacher(Teacher teacher) {
+        Teacher existing = ds.find(Teacher.class)
+                .filter(Filters.eq("teacherId", teacher.getTeacherId()))
+                .first();
+
+        if (existing != null) {
+            throw new DuplicateRecordException("Teacher ID already exists!");
+        }
+
+        ds.save(teacher);
+    }
+
+    public List<Teacher> getAllTeachers() {
+        return ds.find(Teacher.class).iterator().toList();
+    }
+
+    // ===== CONSOLE METHODS =====
+    public void addTeacher() {
         System.out.print("Teacher ID: ");
         int id = sc.nextInt();
         sc.nextLine();
 
-        // Check for duplicate
         Teacher existing = ds.find(Teacher.class)
                 .filter(Filters.eq("teacherId", id))
                 .first();
@@ -55,7 +72,7 @@ public class TeacherService {
     }
 
     public void viewAllTeachers() {
-        List<Teacher> teachers = ds.find(Teacher.class).iterator().toList();
+        List<Teacher> teachers = getAllTeachers();
 
         if (teachers.isEmpty()) {
             System.out.println("⚠ No teachers found!");

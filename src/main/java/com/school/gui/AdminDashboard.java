@@ -237,7 +237,7 @@ public class AdminDashboard {
             }
         });
 
-        addBtn.setOnAction(e -> showddTeacherDialog());
+        addBtn.setOnAction(e -> showAddTeacherDialog());
 
         container.getChildren().addAll(title, buttonBar, outputArea);
         return container;
@@ -363,7 +363,7 @@ public class AdminDashboard {
         });
     }
 
-    private void showddTeacherDialog() { 
+    private void showAddTeacherDialog() {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Add Teacher");
         dialog.setHeaderText("Enter Teacher Details");
