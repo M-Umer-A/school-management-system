@@ -15,7 +15,7 @@ public class TeacherService {
     private final Datastore ds = DBConnection.getDatastore();
     private final Scanner sc = new Scanner(System.in);
 
-    public void addTeacher() {
+    public void addTeacher(Teacher t) {
         System.out.print("Teacher ID: ");
         int id = sc.nextInt();
         sc.nextLine();

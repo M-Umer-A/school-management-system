@@ -15,11 +15,29 @@ public class SubjectService {
     private final Datastore ds = DBConnection.getDatastore();
     private final Scanner sc = new Scanner(System.in);
 
+    // ===== GUI METHODS =====
+    public void addSubject(String code, String name) {
+        Subject existing = ds.find(Subject.class)
+                .filter(Filters.eq("code", code))
+                .first();
+
+        if (existing != null) {
+            throw new DuplicateRecordException("Subject code already exists!");
+        }
+
+        Subject subject = new Subject(code, name);
+        ds.save(subject);
+    }
+
+    public List<Subject> getAllSubjects() {
+        return ds.find(Subject.class).iterator().toList();
+    }
+
+    // ===== CONSOLE METHODS =====
     public void addSubject() {
         System.out.print("Subject Code (e.g., MATH101): ");
         String code = sc.nextLine();
 
-        // Check for duplicate
         Subject existing = ds.find(Subject.class)
                 .filter(Filters.eq("code", code))
                 .first();
@@ -30,9 +48,6 @@ public class SubjectService {
 
         System.out.print("Subject Name: ");
         String name = sc.nextLine();
-
-        System.out.print("Description: ");
-        String description = sc.nextLine();
 
         Subject subject = new Subject(code, name);
 
@@ -45,7 +60,7 @@ public class SubjectService {
     }
 
     public void viewAllSubjects() {
-        List<Subject> subjects = ds.find(Subject.class).iterator().toList();
+        List<Subject> subjects = getAllSubjects();
 
         if (subjects.isEmpty()) {
             System.out.println("⚠ No subjects found!");
@@ -86,35 +101,21 @@ public class SubjectService {
 
         System.out.println("What do you want to update?");
         System.out.println("1. Name");
-        System.out.println("2. Description");
         System.out.print("Choice: ");
         int choice = sc.nextInt();
         sc.nextLine();
 
-        switch (choice) {
-            case 1 -> {
-                System.out.print("New Name: ");
-                String name = sc.nextLine();
-                ds.find(Subject.class)
-                        .filter(Filters.eq("code", code))
-                        .update(dev.morphia.query.updates.UpdateOperators.set("name", name))
-                        .execute();
-            }
-            case 2 -> {
-                System.out.print("New Description: ");
-                String description = sc.nextLine();
-                ds.find(Subject.class)
-                        .filter(Filters.eq("code", code))
-                        .update(dev.morphia.query.updates.UpdateOperators.set("description", description))
-                        .execute();
-            }
-            default -> {
-                System.out.println("Invalid choice!");
-                return;
-            }
+        if (choice == 1) {
+            System.out.print("New Name: ");
+            String name = sc.nextLine();
+            ds.find(Subject.class)
+                    .filter(Filters.eq("code", code))
+                    .update(dev.morphia.query.updates.UpdateOperators.set("name", name))
+                    .execute();
+            System.out.println("✅ Subject updated successfully!");
+        } else {
+            System.out.println("Invalid choice!");
         }
-
-        System.out.println("✅ Subject updated successfully!");
     }
 
     public void deleteSubject() {

@@ -15,12 +15,12 @@ public class StudentService {
     private final Datastore ds = DBConnection.getDatastore();
     private final Scanner sc = new Scanner(System.in);
 
+    // ===== CONSOLE METHODS =====
     public void addStudent() {
         System.out.print("Student ID: ");
         int id = sc.nextInt();
         sc.nextLine();
 
-        // Check for duplicate
         Student existing = ds.find(Student.class)
                 .filter(Filters.eq("studentId", id))
                 .first();
@@ -54,8 +54,25 @@ public class StudentService {
         }
     }
 
+    // ===== GUI METHODS =====
+    public void addStudent(Student student) {
+        Student existing = ds.find(Student.class)
+                .filter(Filters.eq("studentId", student.getStudentId()))
+                .first();
+
+        if (existing != null) {
+            throw new DuplicateRecordException("Student ID already exists!");
+        }
+
+        ds.save(student);
+    }
+
+    public List<Student> getAllStudents() {
+        return ds.find(Student.class).iterator().toList();
+    }
+
     public void viewAllStudents() {
-        List<Student> students = ds.find(Student.class).iterator().toList();
+        List<Student> students = getAllStudents();
 
         if (students.isEmpty()) {
             System.out.println("⚠ No students found!");
